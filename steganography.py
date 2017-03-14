@@ -49,7 +49,6 @@ def write_text(text_to_write, image_size):
     for line in textwrap.wrap(text_to_write, width=60):
         drawer.text((margin,offset), line, font=font)
         offset += 10
-    image_text.save("test3.png")
     return image_text
 
 def encode_image(text_to_encode, template_image="images/samoyed.jpg"):
@@ -73,7 +72,7 @@ def encode_image(text_to_encode, template_image="images/samoyed.jpg"):
     x_size = base_image.size[0]
     y_size = base_image.size[1]
 
-    flag = 0
+
     text_image = write_text(text_to_encode,base_image.size)
     pix_chan_1 = text_image.split()[0]
     pix = pix_chan_1.load()
@@ -88,17 +87,13 @@ def encode_image(text_to_encode, template_image="images/samoyed.jpg"):
             else: # it's probably white
             #bitwise or red channel and 1 - turns least significant digit to 1
                 red_array[i,j] = red_array[i,j]|1
-                flag = 1
-                
             new_image.putpixel((i,j),(red_array[i,j],blue_array[i,j],green_array[i,j]))
-    
-    print(flag)
     new_image.save("images/new_image.png")
 
 if __name__ == '__main__':
     print("Decoding the image...")
-    # decode_image()
-    decode_image("images/new_image.png")
+    decode_image()
+    # decode_image("images/new_image.png")
 
     print("Encoding the image...")
     encode_image("Happy Birthday, Celina!")
