@@ -91,9 +91,9 @@ def encode_image(text_to_encode, template_image="images/samoyed.jpg"):
     new_image.save("images/new_image.png")
 
 if __name__ == '__main__':
-    print("Decoding the image...")
-    decode_image()
+    # print("Decoding the image...")
+    # decode_image()
     # decode_image("images/new_image.png")
 
     print("Encoding the image...")
-    encode_image("Happy Birthday, Celina!")
+    encode_image("Happy Birthday, Celina!  I love you so much <3")
